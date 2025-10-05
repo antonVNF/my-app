@@ -1,26 +1,20 @@
 import React from 'react';
 import {Title} from "@/components/shared/title";
 import {cn} from "@/lib/utils";
-const CATEGORIES = [
-    "House Plants",
-    "Potter Plants",
-    "Seeds",
-    "Small Plants",
-    "Big Plants",
-    "Succulents",
-    "Trerrariums",
-    "Gardening",
-    "Accessories",
+const SIZES = [
+    "Small",
+    "Medium",
+    "Large",
 ]
 
-let activeCategory = 0
+let activeSize = 0
 
-const Categories = () => {
-    return (<div className={"mb-8"}>
-                <Title size={"xs"} text="Categories" className={"font-bold mb-4"}/>
-                {CATEGORIES.map((c, i) => {
+const Sizes = () => {
+    return (<div>
+                <Title size={"xs"} text="Sizes" className={"font-bold mt-6 mb-4"}/>
+                {SIZES.map((c, i) => {
                     return (
-                        <h5 className={cn("text-sm pb-3 pl-7 pr-6 cursor-pointer hover:text-primary transition-colors", i === activeCategory ? "text-primary": "" )}
+                        <h5 className={cn("text-sm pb-3 pl-5 pr-6 cursor-pointer hover:text-primary transition-colors", i+1 === activeSize ? "text-primary": "" )}
                             key={c}>
                             {c}
                         </h5>
@@ -30,4 +24,4 @@ const Categories = () => {
     );
 };
 
-export default Categories;
+export default Sizes;
