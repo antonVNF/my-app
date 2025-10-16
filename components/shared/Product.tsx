@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Title } from '@/components/shared/title';
 import { ShoppingCart, Heart, Search } from 'lucide-react';
 
@@ -12,7 +13,6 @@ export type Plant = {
   price: number;
   discountPercent?: number;
   imageUrl: string;
-  description: string;
   isNew?: boolean;
 };
 
@@ -21,16 +21,7 @@ function getOldPrice(price: number, discountPercent?: number) {
   return (price / (1 - discountPercent / 100)).toFixed(2);
 }
 
-const Product = ({
-  id,
-  name,
-  category,
-  price,
-  discountPercent,
-  imageUrl,
-  description,
-  isNew,
-}: Plant) => {
+const Product = ({ id, name, price, discountPercent, imageUrl, isNew }: Plant) => {
   const oldPrice = getOldPrice(price, discountPercent);
 
   return (
@@ -45,7 +36,9 @@ const Product = ({
         </div>
       )}
 
-      <div className="w-[258px] h-[299px] relative mb-3 overflow-hidden bg-gray-100 group">
+      <Link
+        href={id}
+        className="block w-[258px] h-[299px] relative mb-3 overflow-hidden bg-gray-100 group">
         <Image
           unoptimized
           src={imageUrl}
@@ -64,7 +57,7 @@ const Product = ({
             <Search size={18} />
           </button>
         </div>
-      </div>
+      </Link>
 
       <Title text={name} size="xs" className="mb-1.5 leading-[16px]" />
 

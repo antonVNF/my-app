@@ -1,28 +1,25 @@
-"use client"
-
+'use client';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from '@/components/ui/select';
+import { useProductFilterStore } from './store/useProductFilterStore';
 
 const sortOptions = [
-  { value: "default", label: "Default sorting" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
-]
+  { value: 'default', label: 'Default sorting' },
+  { value: 'price-asc', label: 'Price: Low to High' },
+  { value: 'price-desc', label: 'Price: High to Low' },
+];
 
-interface Props {
-  value: string
-  onChange: (value: string) => void
-}
+export function SortSelect() {
+  const { sort, setSort } = useProductFilterStore();
 
-export function SortSelect({ value, onChange }: Props) {
   return (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[200px] justify-between">
+    <Select value={sort} onValueChange={setSort}>
+      <SelectTrigger className="w-[220px] justify-between">
         <span className="text-sm text-gray-600">Sort by:</span>
         <SelectValue placeholder="Select sorting" />
       </SelectTrigger>
@@ -34,5 +31,5 @@ export function SortSelect({ value, onChange }: Props) {
         ))}
       </SelectContent>
     </Select>
-  )
+  );
 }
