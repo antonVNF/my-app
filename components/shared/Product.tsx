@@ -7,14 +7,18 @@ import { Title } from '@/components/shared/title';
 import { ShoppingCart, Heart, Search } from 'lucide-react';
 
 export type Plant = {
-  id: string;
+  id: number;
   name: string;
-  category: number;
+  imageUrl: string;
   price: number;
   discountPercent?: number;
-  imageUrl: string;
   isNew?: boolean;
+  categoryId: number;
+  size: 'SMALL' | 'MEDIUM' | 'LARGE';
+  createdAt?: string;
+  updatedAt?: string;
 };
+
 
 function getOldPrice(price: number, discountPercent?: number) {
   if (!discountPercent) return null;
@@ -37,7 +41,7 @@ const Product = ({ id, name, price, discountPercent, imageUrl, isNew }: Plant) =
       )}
 
       <Link
-        href={id}
+        href={""}
         className="block w-[258px] h-[299px] relative mb-3 overflow-hidden bg-gray-100 group">
         <Image
           unoptimized
