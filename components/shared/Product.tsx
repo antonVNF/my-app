@@ -7,26 +7,25 @@ import { Title } from '@/components/shared/title';
 import { ShoppingCart, Heart, Search } from 'lucide-react';
 
 export type Plant = {
-  id: number;
+  // id: number;
   name: string;
   imageUrl: string;
-  price: number;
+  // price: number;
   discountPercent?: number;
   isNew?: boolean;
   categoryId: number;
-  size: 'SMALL' | 'MEDIUM' | 'LARGE';
+  // size: 'SMALL' | 'MEDIUM' | 'LARGE';
   createdAt?: string;
   updatedAt?: string;
 };
 
+// function getOldPrice(price: number, discountPercent?: number) {
+//   if (!discountPercent) return null;
+//   return (price / (1 - discountPercent / 100)).toFixed(2);
+// }
 
-function getOldPrice(price: number, discountPercent?: number) {
-  if (!discountPercent) return null;
-  return (price / (1 - discountPercent / 100)).toFixed(2);
-}
-
-const Product = ({ id, name, price, discountPercent, imageUrl, isNew }: Plant) => {
-  const oldPrice = getOldPrice(price, discountPercent);
+const Product = ({ name, discountPercent, imageUrl, isNew }: Plant) => {
+  // const oldPrice = getOldPrice(price, discountPercent);
 
   return (
     <div className="relative w-[258px] transition-all border-t border-transparent hover:border-primary overflow-hidden">
@@ -41,7 +40,7 @@ const Product = ({ id, name, price, discountPercent, imageUrl, isNew }: Plant) =
       )}
 
       <Link
-        href={""}
+        href={''}
         className="block w-[258px] h-[299px] relative mb-3 overflow-hidden bg-gray-100 group">
         <Image
           unoptimized
@@ -66,10 +65,10 @@ const Product = ({ id, name, price, discountPercent, imageUrl, isNew }: Plant) =
       <Title text={name} size="xs" className="mb-1.5 leading-[16px]" />
 
       <div className="flex items-center gap-2">
-        <span className="text-primary font-bold leading-[16px]">${price.toFixed(2)}</span>
+        {/* <span className="text-primary font-bold leading-[16px]">${price.toFixed(2)}</span>
         {oldPrice && (
           <span className="text-gray-400 font-bold line-through leading-[16px]">${oldPrice}</span>
-        )}
+        )} */}
       </div>
     </div>
   );
