@@ -8,9 +8,9 @@ const randomDecimalNumber = (min: number, max: number) => {
 };
 
 const generateProductItem = ({
-  productId,
-  size,
-}: {
+                               productId,
+                               size,
+                             }: {
   productId: number;
   size: 'SMALL' | 'MEDIUM' | 'LARGE';
 }) => {
@@ -62,9 +62,9 @@ async function up() {
 
   for (const product of allProducts) {
     productItemsData.push(
-      generateProductItem({ productId: product.id, size: 'SMALL' }),
-      generateProductItem({ productId: product.id, size: 'MEDIUM' }),
-      generateProductItem({ productId: product.id, size: 'LARGE' }),
+        generateProductItem({ productId: product.id, size: 'SMALL' }),
+        generateProductItem({ productId: product.id, size: 'MEDIUM' }),
+        generateProductItem({ productId: product.id, size: 'LARGE' }),
     );
   }
 
@@ -72,24 +72,24 @@ async function up() {
     data: productItemsData,
   });
 
-    await prisma.cart.createMany({
-        data: [{
-            userId: 1,
-            total: 0,
-            token: "1111",
-        },
-          {
-            userId: 2,
-            total: 0,
-            token: "2222",
-          },
-        ]
-    });
+  await prisma.cart.createMany({
+    data: [{
+      userId: 1,
+      total: 0,
+      token: "1111",
+    },
+      {
+        userId: 2,
+        total: 0,
+        token: "2222",
+      },
+    ]
+  });
   await prisma.cartItem.createMany({
     data: [{
-        cartId: 1,
-        productId: 1,
-        quantity: 1,
+      cartId: 1,
+      productId: 1,
+      quantity: 1,
     },
       {
         cartId: 1,
