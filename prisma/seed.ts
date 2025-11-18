@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { categories, products } from './constants.ts';
 const prisma = new PrismaClient();
 
@@ -18,7 +18,7 @@ const generateProductItem = ({
     productId,
     size,
     price: randomDecimalNumber(100, 1500),
-  } as Prisma.ProductItemUncheckedCreateInput;
+  }
 };
 
 async function up() {
@@ -71,6 +71,33 @@ async function up() {
   await prisma.productItem.createMany({
     data: productItemsData,
   });
+
+    await prisma.cart.createMany({
+        data: [{
+            userId: 1,
+            total: 0,
+            token: "1111",
+        },
+          {
+            userId: 2,
+            total: 0,
+            token: "2222",
+          },
+        ]
+    });
+  await prisma.cartItem.createMany({
+    data: [{
+        cartId: 1,
+        productId: 1,
+        quantity: 1,
+    },
+      {
+        cartId: 1,
+        productId: 2,
+        quantity: 1,
+      }
+    ]
+  })
 }
 
 async function down() {
@@ -79,6 +106,7 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
 }
+
 
 async function main() {
   try {

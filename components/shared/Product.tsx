@@ -62,7 +62,7 @@ const Product = ({ name, discountPercent, imageUrl, isNew }: Plant) => {
         </div>
       </Link>
 
-      <Title text={name} size="xs" className="mb-1.5 leading-[16px]" />
+      <Title text={name} size="xs" className="mb-1.5 leading-4" />
 
       <div className="flex items-center gap-2">
         {/* <span className="text-primary font-bold leading-[16px]">${price.toFixed(2)}</span>
