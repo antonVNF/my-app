@@ -1,8 +1,9 @@
-import MainPage from "@/components/shared/MainPage";
+import MainPage from '@/shared/components/shared/MainPage';
 
 export default function Home() {
-  return (<>
-        <MainPage></MainPage>
-  </>
+  return (
+    <>
+      <MainPage></MainPage>
+    </>
   );
 }

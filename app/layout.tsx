@@ -1,25 +1,25 @@
-import type { Metadata } from "next";
-import { Geist, Roboto } from "next/font/google"; 
-import "./globals.css";
-import Header from "@/components/shared/Header";
+import type { Metadata } from 'next';
+import { Geist, Roboto } from 'next/font/google';
+import './globals.css';
+import Header from '@/shared/components/shared/Header';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const roboto = Roboto({
-  variable: "--font-roboto", 
-  subsets: ["latin"],
+  variable: '--font-roboto',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Plants shop",
-  description: "Shop of the best plants",
+  title: 'Plants shop',
+  description: 'Shop of the best plants',
 };
 
 export default function RootLayout({
-  children,
+  children, 
 }: Readonly<{
   children: React.ReactNode;
 }>) {

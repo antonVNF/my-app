@@ -1,10 +1,10 @@
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -62,14 +62,19 @@ model Category {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  imageUrl    String
-  description String?
-  isNew       Boolean  @default(false)
-  categoryId  Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+  name            String
+  imageUrl        String
+  thumbnailUrl    String[]
+  description     String?
+  isNew           Boolean  @default(false)
+  categoryId      Int
+  sizes           Json
+  price           Float
+  discountPercent Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   category      Category       @relation(fields: [categoryId], references: [id])
   items         ProductItem[]
@@ -82,7 +87,7 @@ model ProductItem {
   productId       Int
   size            ProductSize
   price           Float
-  discountPercent Float?
+  discountPercent Int         @default(0)
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
